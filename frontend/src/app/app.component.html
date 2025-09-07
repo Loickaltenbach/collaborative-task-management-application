@@ -1,0 +1,36 @@
+<div class="app-container">
+  <mat-toolbar color="primary">
+    <span class="logo" (click)="goToHome()">{{ title }}</span>
+    
+    <span class="toolbar-spacer"></span>
+    
+    <!-- Navigation pour utilisateurs connectés -->
+    <div *ngIf="isLoggedIn" class="nav-links">
+      <button mat-button (click)="goToDashboard()">
+        <mat-icon>dashboard</mat-icon>
+        Tableau de bord
+      </button>
+      <span class="user-info">{{ userEmail }}</span>
+      <button mat-button (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        Déconnexion
+      </button>
+    </div>
+    
+    <!-- Navigation pour visiteurs -->
+    <div *ngIf="!isLoggedIn" class="auth-links">
+      <button mat-button (click)="goToLogin()">
+        <mat-icon>login</mat-icon>
+        Connexion
+      </button>
+      <button mat-raised-button color="accent" (click)="goToRegister()">
+        <mat-icon>person_add</mat-icon>
+        Inscription
+      </button>
+    </div>
+  </mat-toolbar>
+
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

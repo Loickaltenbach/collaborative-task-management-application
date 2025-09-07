@@ -1,0 +1,10 @@
+<div *ngIf="loading">Chargement...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<mat-list *ngIf="!loading">
+	<mat-list-item *ngFor="let project of projects">
+		<span>{{ project.name }}</span>
+		<button mat-icon-button color="warn" (click)="deleteProject(project.id)">
+			<mat-icon>delete</mat-icon>
+		</button>
+	</mat-list-item>
+</mat-list>

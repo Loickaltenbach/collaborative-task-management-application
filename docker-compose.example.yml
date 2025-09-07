@@ -1,0 +1,50 @@
+# Docker Compose Example Configuration
+# Copy this file to docker-compose.yml and update the environment variables
+
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-taskdb}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-CHANGE_THIS_PASSWORD}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  backend:
+    build: ./backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${POSTGRES_DB:-taskdb}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-postgres}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-CHANGE_THIS_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET:-CHANGE_THIS_JWT_SECRET_TO_SOMETHING_VERY_SECURE}
+      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:-http://localhost:4200}
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "${FRONTEND_PORT:-4200}:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  db_data:
+
+# Instructions:
+# 1. Copy this file to docker-compose.yml
+# 2. Create a .env file with your actual values:
+#    POSTGRES_PASSWORD=your_strong_password
+#    JWT_SECRET=your_super_secure_jwt_secret_at_least_256_bits
+#    DB_PORT=5432
+#    BACKEND_PORT=8080
+#    FRONTEND_PORT=4200
+# 3. Never commit docker-compose.yml with real passwords

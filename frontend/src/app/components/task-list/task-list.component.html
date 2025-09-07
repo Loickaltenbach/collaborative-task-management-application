@@ -1,0 +1,27 @@
+<mat-form-field appearance="fill">
+	<mat-label>Filtrer par utilisateur</mat-label>
+	<mat-select [(ngModel)]="selectedUserId" (selectionChange)="onUserChange()">
+		<mat-option value="">Tous</mat-option>
+		<mat-option *ngFor="let user of users" [value]="user.id">{{ user.username }}</mat-option>
+	</mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill">
+	<mat-label>Filtrer par catégorie</mat-label>
+	<mat-select [(ngModel)]="selectedCategoryId" (selectionChange)="onCategoryChange()">
+		<mat-option value="">Toutes</mat-option>
+		<mat-option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</mat-option>
+	</mat-select>
+</mat-form-field>
+<div *ngIf="loading">Chargement...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<mat-list *ngIf="!loading">
+	<mat-list-item *ngFor="let task of tasks">
+		<span [ngClass]="{ 'completed': task.completed }">{{ task.title }}</span>
+		<button mat-icon-button color="primary" (click)="markAsCompleted(task.id)" [disabled]="task.completed">
+			<mat-icon>check_circle</mat-icon>
+		</button>
+		<button mat-icon-button color="warn" (click)="deleteTask(task.id)">
+			<mat-icon>delete</mat-icon>
+		</button>
+	</mat-list-item>
+</mat-list>

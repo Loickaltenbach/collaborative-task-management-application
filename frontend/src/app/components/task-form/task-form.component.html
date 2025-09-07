@@ -1,0 +1,71 @@
+<div class="task-form-container">
+  <mat-card class="task-form-card">
+    <mat-card-header>
+      <mat-card-title>{{ isEditing ? 'Modifier la tâche' : 'Nouvelle tâche' }}</mat-card-title>
+      <mat-card-subtitle>{{ isEditing ? 'Modifiez les détails de votre tâche' : 'Créez une nouvelle tâche' }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form #taskForm="ngForm" (ngSubmit)="saveTask()" class="task-form">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Titre de la tâche</mat-label>
+          <input matInput 
+                 name="title"
+                 [(ngModel)]="task.title"
+                 required
+                 placeholder="Entrez le titre de votre tâche">
+          <mat-icon matSuffix>title</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput 
+                    name="description"
+                    [(ngModel)]="task.description"
+                    rows="4"
+                    placeholder="Décrivez votre tâche en détail"></textarea>
+          <mat-icon matSuffix>description</mat-icon>
+        </mat-form-field>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Statut</mat-label>
+            <mat-select name="status" [(ngModel)]="task.status">
+              <mat-option value="TODO">À faire</mat-option>
+              <mat-option value="IN_PROGRESS">En cours</mat-option>
+              <mat-option value="DONE">Terminé</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>assignment</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Priorité</mat-label>
+            <mat-select name="priority" [(ngModel)]="task.priority">
+              <mat-option value="LOW">Faible</mat-option>
+              <mat-option value="MEDIUM">Moyenne</mat-option>
+              <mat-option value="HIGH">Élevée</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>priority_high</mat-icon>
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions class="action-buttons">
+      <button mat-raised-button 
+              color="primary"
+              (click)="saveTask()"
+              [disabled]="!task.title">
+        <mat-icon>{{ isEditing ? 'save' : 'add' }}</mat-icon>
+        {{ isEditing ? 'Sauvegarder' : 'Créer la tâche' }}
+      </button>
+
+      <button mat-raised-button
+              color="accent"
+              (click)="goBackToDashboard()">
+        <mat-icon>arrow_back</mat-icon>
+        Retour au tableau de bord
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

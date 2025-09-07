@@ -1,28 +1,80 @@
-# Angular specific
-/dist/
-/out-tsc/
-/tmp/
-/coverage/
-/e2e/test-output/
-/.angular/
+# === SECURITY - NEVER COMMIT ===
+# Environment files with secrets
+.env
+.env.local
+.env.production
+*.env
+backend/.env
+frontend/.env
+
+# Application secrets and configs
+application-local.properties
+application-prod.properties
+**/*secret*
+**/*password*
+**/*key*
+
+# === BUILD ARTIFACTS ===
+# Frontend build artifacts
+dist/
+out-tsc/
+tmp/
+coverage/
+e2e/test-output/
 .angular/
-
-# Node modules and dependency files
-/node_modules/
-/package-lock.json
-/yarn.lock
-
-# Environment files
-/.env
-
-# Angular CLI and build artefacts
-/.angular-cli.json
-/.ng/
-
-# TypeScript cache
 *.tsbuildinfo
 
+# Backend build artifacts
+target/
+*.jar
+*.war
+*.class
+
+# === DEPENDENCIES ===
+# Node modules and dependency files
+node_modules/
+package-lock.json
+yarn.lock
+.pnp
+.pnp.js
+
+# Maven
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+
+# === LOGS AND TEMP FILES ===
 # Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# === IDE AND OS ===
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# === DOCKER ===
+# Docker volumes and data
+docker-compose.override.yml
+.dockerignore
