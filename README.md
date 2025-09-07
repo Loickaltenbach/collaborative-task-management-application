@@ -1,69 +1,16 @@
 # Collaborative Task Management Application
 
-Une application de gestio### Déploiement avec Docker Compose
-
-1. **Cloner le repository**
-
-```bash
-git clone https://github.com/Loickaltenbach/collaborative-task-management-application.git
-cd collaborative-task-management-application
-```
-
-2. **Configuration sécurisée**
-
-```bash
-# Copier les fichiers d'exemple
-cp .env.example .env
-cp docker-compose.example.yml docker-compose.yml
-
-# Éditer le fichier .env avec vos valeurs sécurisées
-nano .env
-```
-
-3. **Configurer les variables d'environnement**
-
-Éditez le fichier `.env` avec des valeurs sécurisées :
-
-```bash
-POSTGRES_PASSWORD=your_super_secure_password_here
-JWT_SECRET=your_jwt_secret_at_least_256_bits_long
-```
-
-4. **Lancer l'application**
-
-```bash
-docker-compose up -d
-```
-
-5. **Accéder à l'application**
-
-- Frontend : <http://localhost:4200>
-- Backend API : <http://localhost:8080>
-- Base de données PostgreSQL : localhost:5432
-
-### ⚠️ IMPORTANT - Sécurité
-
-**Avant de déployer en production :**
-
-1. **Changez TOUS les mots de passe par défaut**
-2. **Générez un JWT secret sécurisé** :
-
-   ```bash
-   openssl rand -base64 64
-   ```
-
-3. **Utilisez HTTPS en production**
-4. **Consultez le fichier [SECURITY.md](SECURITY.md) pour plus de détails**ative construite avec Spring Boot (backend) et Angular (frontend).
+A collaborative task management application built with Spring Boot (backend) and Angular (frontend).
 
 ## 🏗️ Architecture
 
-L'application est composée de trois services principaux :
+The application consists of three main services:
 
-- **Frontend** : Application Angular avec Angular Material
-- **Backend** : API REST Spring Boot
-- **Base de données** : PostgreSQL
+- **Frontend**: Angular application with Angular Material
+- **Backend**: Spring Boot REST API
+- **Database**: PostgreSQL
 
-## 🚀 Technologies Utilisées
+## 🚀 Technologies Used
 
 ### Backend
 
@@ -85,64 +32,98 @@ L'application est composée de trois services principaux :
 ### DevOps
 
 - **Docker & Docker Compose**
-- **Nginx** (pour servir le frontend)
+- **Nginx** (to serve the frontend)
 
-## 📋 Fonctionnalités
+## 📋 Features
 
-### Gestion des Utilisateurs
+### User Management
 
-- ✅ Inscription et connexion
-- ✅ Authentification JWT
-- ✅ Gestion des profils utilisateurs
+- ✅ Registration and login
+- ✅ JWT authentication
+- ✅ User profile management
 
-### Gestion des Tâches
+### Task Management
 
-- ✅ Création, modification et suppression de tâches
-- ✅ Statuts des tâches : À faire, En cours, Terminé
-- ✅ Niveaux de priorité : Faible, Moyenne, Élevée
-- ✅ Tableau de bord avec statistiques
-- ✅ Interface utilisateur moderne et responsive
+- ✅ Create, edit, and delete tasks
+- ✅ Task statuses: To Do, In Progress, Done
+- ✅ Priority levels: Low, Medium, High
+- ✅ Dashboard with statistics
+- ✅ Modern and responsive user interface
 
-### Gestion des Projets
+### Project Management
 
-- ✅ Création et gestion de projets
-- ✅ Attribution de tâches aux projets
-- ✅ Collaboration entre utilisateurs
+- ✅ Create and manage projects
+- ✅ Assign tasks to projects
+- ✅ User collaboration
 
-### Gestion des Catégories
+### Category Management
 
-- ✅ Organisation des tâches par catégories
-- ✅ Filtrage et recherche
+- ✅ Organize tasks by categories
+- ✅ Filtering and search capabilities
 
-## 🛠️ Installation et Déploiement
+## 🛠️ Installation and Deployment
 
-### Prérequis
+### Prerequisites
 
-- Docker et Docker Compose
+- Docker and Docker Compose
 - Git
 
-### Déploiement avec Docker Compose
+### Deployment with Docker Compose
 
-1. **Cloner le repository**
+1. **Clone the repository**
 
 ```bash
 git clone https://github.com/Loickaltenbach/collaborative-task-management-application.git
 cd collaborative-task-management-application
 ```
 
-2. **Lancer l'application**
+2. **Secure configuration**
+
+```bash
+# Copy example files
+cp .env.example .env
+cp docker-compose.example.yml docker-compose.yml
+
+# Edit the .env file with your secure values
+nano .env
+```
+
+3. **Configure environment variables**
+
+Edit the `.env` file with secure values:
+
+```bash
+POSTGRES_PASSWORD=your_super_secure_password_here
+JWT_SECRET=your_jwt_secret_at_least_256_bits_long
+```
+
+4. **Launch the application**
 
 ```bash
 docker-compose up -d
 ```
 
-3. **Accéder à l'application**
+5. **Access the application**
 
-- Frontend : <http://localhost:4200>
-- Backend API : <http://localhost:8080>
-- Base de données PostgreSQL : localhost:5432
+- Frontend: <http://localhost:4200>
+- Backend API: <http://localhost:8080>
+- PostgreSQL Database: localhost:5432
 
-### Développement Local
+### ⚠️ IMPORTANT - Security
+
+**Before deploying to production:**
+
+1. **Change ALL default passwords**
+2. **Generate a secure JWT secret**:
+
+   ```bash
+   openssl rand -base64 64
+   ```
+
+3. **Use HTTPS in production**
+4. **Consult the [SECURITY.md](SECURITY.md) file for more details**
+
+### Local Development
 
 #### Backend (Spring Boot)
 
@@ -159,29 +140,29 @@ npm install
 npm start
 ```
 
-## 📁 Structure du Projet
+## 📁 Project Structure
 
 ```
 collaborative-task-management-application/
-├── backend/                     # Application Spring Boot
+├── backend/                     # Spring Boot Application
 │   ├── src/main/java/com/example/taskmanagement/
-│   │   ├── controller/         # Contrôleurs REST
-│   │   ├── model/             # Entités JPA
-│   │   ├── repository/        # Repositories Spring Data
-│   │   ├── security/          # Configuration de sécurité
-│   │   ├── service/           # Services métier
-│   │   └── exception/         # Gestion des exceptions
+│   │   ├── controller/         # REST Controllers
+│   │   ├── model/             # JPA Entities
+│   │   ├── repository/        # Spring Data Repositories
+│   │   ├── security/          # Security Configuration
+│   │   ├── service/           # Business Services
+│   │   └── exception/         # Exception Handling
 │   ├── src/main/resources/
 │   │   └── application.properties
 │   ├── Dockerfile
 │   └── pom.xml
-├── frontend/                   # Application Angular
+├── frontend/                   # Angular Application
 │   ├── src/app/
-│   │   ├── components/        # Composants réutilisables
-│   │   ├── pages/            # Pages de l'application
-│   │   ├── services/         # Services Angular
-│   │   ├── interceptors/     # Intercepteurs HTTP
-│   │   └── models/           # Interfaces TypeScript
+│   │   ├── components/        # Reusable Components
+│   │   ├── pages/            # Application Pages
+│   │   ├── services/         # Angular Services
+│   │   ├── interceptors/     # HTTP Interceptors
+│   │   └── models/           # TypeScript Interfaces
 │   ├── Dockerfile
 │   ├── package.json
 │   └── angular.json
@@ -190,66 +171,66 @@ collaborative-task-management-application/
 
 ## 🔌 API Endpoints
 
-### Authentification
+### Authentication
 
-- `POST /api/auth/register` - Inscription
-- `POST /api/auth/login` - Connexion
+- `POST /api/auth/register` - User registration
+- `POST /api/auth/login` - User login
 
-### Tâches
+### Tasks
 
-- `GET /api/tasks` - Lister les tâches
-- `POST /api/tasks` - Créer une tâche
-- `PUT /api/tasks/{id}` - Modifier une tâche
-- `DELETE /api/tasks/{id}` - Supprimer une tâche
+- `GET /api/tasks` - List tasks
+- `POST /api/tasks` - Create a task
+- `PUT /api/tasks/{id}` - Update a task
+- `DELETE /api/tasks/{id}` - Delete a task
 
-### Projets
+### Projects
 
-- `GET /api/projects` - Lister les projets
-- `POST /api/projects` - Créer un projet
-- `PUT /api/projects/{id}` - Modifier un projet
-- `DELETE /api/projects/{id}` - Supprimer un projet
+- `GET /api/projects` - List projects
+- `POST /api/projects` - Create a project
+- `PUT /api/projects/{id}` - Update a project
+- `DELETE /api/projects/{id}` - Delete a project
 
-### Catégories
+### Categories
 
-- `GET /api/categories` - Lister les catégories
-- `POST /api/categories` - Créer une catégorie
+- `GET /api/categories` - List categories
+- `POST /api/categories` - Create a category
 
-## 🎨 Interface Utilisateur
+## 🎨 User Interface
 
-L'application dispose d'une interface moderne avec :
+The application features a modern interface with:
 
-- Design responsive adapté mobile et desktop
-- Thème Material Design
-- Animations et transitions fluides
-- Dashboard avec statistiques visuelles
-- Formulaires intuitifs de création/modification
+- Responsive design adapted for mobile and desktop
+- Material Design theme
+- Smooth animations and transitions
+- Dashboard with visual statistics
+- Intuitive forms for creation/modification
 
-## 🔒 Sécurité
+## 🔒 Security
 
-- Authentification basée sur JWT
-- Protection des routes avec guards Angular
-- Validation des données côté client et serveur
-- Hachage sécurisé des mots de passe
-- Protection CORS configurée
+- JWT-based authentication
+- Route protection with Angular guards
+- Data validation on client and server side
+- Secure password hashing
+- Configured CORS protection
 
-## 🚀 Déploiement en Production
+## 🚀 Production Deployment
 
-### Variables d'environnement
+### Environment Variables
 
 #### Backend
 
 ```env
 SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/taskdb
 SPRING_DATASOURCE_USERNAME=postgres
-SPRING_DATASOURCE_PASSWORD=postgres
-JWT_SECRET=votre-clé-secrète-jwt
+SPRING_DATASOURCE_PASSWORD=your_secure_password
+JWT_SECRET=your_secure_jwt_secret
 ```
 
 #### Frontend
 
-Les variables d'environnement sont configurées dans `src/environments/`
+Environment variables are configured in `src/environments/`
 
-## 📝 Scripts Disponibles
+## 📝 Available Scripts
 
 ### Backend
 
@@ -263,47 +244,49 @@ Les variables d'environnement sont configurées dans `src/environments/`
 # Packaging
 ./mvnw package
 
-# Exécution
+# Execution
 ./mvnw spring-boot:run
 ```
 
 ### Frontend
 
 ```bash
-# Installation des dépendances
+# Install dependencies
 npm install
 
-# Développement
+# Development
 npm start
 
-# Build de production
+# Production build
 npm run build
 
 # Tests
 npm test
 ```
 
-## 🤝 Contribution
+## 🤝 Contributing
 
-1. Fork le projet
-2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
-3. Commit vos changements (`git commit -m 'Add some AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrir une Pull Request
+1. Fork the project
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+For detailed contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## 📄 License
 
-Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## 👥 Auteurs
+## 👥 Authors
 
-- **Loic Kaltenbach** - *Développement initial* - [Loickaltenbach](https://github.com/Loickaltenbach)
+- **Loic Kaltenbach** - *Initial development* - [Loickaltenbach](https://github.com/Loickaltenbach)
 
-## 🐛 Signaler un Bug
+## 🐛 Bug Reports
 
-Si vous trouvez un bug, veuillez ouvrir une [issue](https://github.com/Loickaltenbach/collaborative-task-management-application/issues) avec :
+If you find a bug, please open an [issue](https://github.com/Loickaltenbach/collaborative-task-management-application/issues) with:
 
-- Description détaillée du problème
-- Étapes pour reproduire
-- Capture d'écran si applicable
-- Informations sur votre environnement
+- Detailed description of the problem
+- Steps to reproduce
+- Screenshots if applicable
+- Information about your environment
